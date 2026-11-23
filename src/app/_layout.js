@@ -1,17 +1,32 @@
 import { Stack } from "expo-router";
 import { StatusBar } from "expo-status-bar";
+import { AppProvider, useApp } from "../context/AppContext";
 
-export default function RootLayout() {
-  // O Stack é o navegador principal. Ele contém dois "destinos":
-  // 1) o grupo (tabs), que é o conjunto das 4 abas
-  // 2) a tela de motivação, que abre por cima das abas
+// Componente separado porque só quem está DENTRO do Provider pode usar o useApp
+function Navegacao() {
+  const { config, tema } = useApp();
+
   return (
     <>
-      <StatusBar style="dark" />
-      <Stack>
+      {/* Tema escuro: ícones da barra de status claros. Tema claro: escuros. */}
+      <StatusBar style={config.temaEscuro ? "light" : "dark"} />
+      <Stack
+        screenOptions={{
+          statusBarStyle: config.temaEscuro ? "light" : "dark",
+          contentStyle: { backgroundColor: tema.fundo },
+        }}
+      >
         <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
         <Stack.Screen name="motivacao" options={{ title: "Motivação" }} />
       </Stack>
     </>
+  );
+}
+
+export default function RootLayout() {
+  return (
+    <AppProvider>
+      <Navegacao />
+    </AppProvider>
   );
 }
