@@ -1,12 +1,19 @@
 import { Ionicons } from "@expo/vector-icons";
 import { Tabs } from "expo-router";
+import { useApp } from "../../context/AppContext";
 
 export default function TabsLayout() {
+  const { tema } = useApp();
   return (
     <Tabs
       screenOptions={{
         headerShown: false, // cada tela terá seu próprio título
-        tabBarActiveTintColor: "#E11D48", // cor da aba selecionada
+        tabBarActiveTintColor: tema.foco,
+        tabBarInactiveTintColor: tema.textoSecundario,
+        tabBarStyle: {
+          backgroundColor: tema.card,
+          borderTopColor: tema.borda,
+        },
       }}
     >
       {/* "name" é o nome do arquivo, sem o .js */}
