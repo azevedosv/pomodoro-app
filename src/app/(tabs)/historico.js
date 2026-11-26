@@ -93,6 +93,7 @@ export default function Historico() {
             tarefa={item.tarefa}
             duracao={item.duracao}
             dataHora={item.dataHora}
+            humor={item.humor}
           />
         )}
         contentContainerStyle={styles.lista}

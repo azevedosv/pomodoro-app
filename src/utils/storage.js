@@ -7,6 +7,7 @@ export const CHAVES = {
   ciclo: "@pomodoro_ciclo",
   tarefas: "@pomodoro_tarefas",
   historico: "@pomodoro_historico",
+  audio: "@pomodoro_audio", // NOVO: música e som escolhidos
 };
 
 // Valores iniciais (padrão) das configurações

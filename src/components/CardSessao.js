@@ -1,6 +1,7 @@
 import { Ionicons } from "@expo/vector-icons";
 import { StyleSheet, Text, View } from "react-native";
 import { useApp } from "../context/AppContext";
+import { HUMORES } from "../utils/humor"; // [F]
 
 // Transforma 5 em "05"
 function doisDigitos(numero) {
@@ -17,8 +18,12 @@ function formatarDataHora(iso) {
   return `${dia}/${mes} às ${hora}:${minuto}`;
 }
 
-export default function CardSessao({ tarefa, duracao, dataHora }) {
+// [MUDOU] ganhou a prop "humor"
+export default function CardSessao({ tarefa, duracao, dataHora, humor }) {
   const { tema } = useApp();
+
+  // [F] Procura o humor da sessão. Sessões antigas não têm, e dão undefined.
+  const humorSessao = HUMORES.find((h) => h.id === humor);
 
   return (
     <View
@@ -38,6 +43,8 @@ export default function CardSessao({ tarefa, duracao, dataHora }) {
           {duracao} min · {formatarDataHora(dataHora)}
         </Text>
       </View>
+      {/* [F] Emoji do humor, só quando existe */}
+      {humorSessao && <Text style={styles.emoji}>{humorSessao.emoji}</Text>}
     </View>
   );
 }
@@ -61,4 +68,5 @@ const styles = StyleSheet.create({
   textos: { flex: 1 },
   tarefa: { fontSize: 16, fontWeight: "600" },
   detalhe: { fontSize: 13, marginTop: 2 },
+  emoji: { fontSize: 24 }, // [F]
 });

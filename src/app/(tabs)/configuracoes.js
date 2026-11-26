@@ -13,7 +13,7 @@ function paraTextos(config) {
   return {
     foco: String(config.foco),
     pausaCurta: String(config.pausaCurta),
-    pausaLonga: String(config.paulaLonga),
+    pausaLonga: String(config.pausaLonga),
     meta: config.meta === null ? "" : String(config.meta),
     pausaLongaACada: String(config.pausaLongaACada),
   };

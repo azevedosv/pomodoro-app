@@ -8,7 +8,6 @@ function Navegacao() {
 
   return (
     <>
-      {/* Tema escuro: ícones da barra de status claros. Tema claro: escuros. */}
       <StatusBar style={config.temaEscuro ? "light" : "dark"} />
       <Stack
         screenOptions={{
@@ -17,7 +16,15 @@ function Navegacao() {
         }}
       >
         <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
-        <Stack.Screen name="motivacao" options={{ title: "Motivação" }} />
+        {/* NOVO: a tela de humor, que abre por cima das abas */}
+        <Stack.Screen
+          name="humor"
+          options={{
+            title: "Como você está?",
+            headerStyle: { backgroundColor: tema.card },
+            headerTintColor: tema.texto,
+          }}
+        />
       </Stack>
     </>
   );
