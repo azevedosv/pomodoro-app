@@ -34,17 +34,6 @@ export default function Historico() {
     await salvarDados(CHAVES.historico, novaLista);
   }
 
-  // TEMPORÁRIO: cria uma sessão de exemplo. Apagar quando o Timer existir.
-  function adicionarTeste() {
-    const nova = {
-      id: Date.now().toString(),
-      tarefa: "Estudar React Native",
-      duracao: 25,
-      dataHora: new Date().toISOString(),
-    };
-    atualizarHistorico([nova, ...historico]);
-  }
-
   function confirmarLimpeza() {
     Alert.alert(
       "Limpar histórico",
@@ -115,13 +104,6 @@ export default function Historico() {
       />
 
       <View style={styles.rodape}>
-        {/* TEMPORÁRIO: sai quando o Timer estiver pronto */}
-        <Botao
-          titulo="Adicionar sessão de teste"
-          variante="contorno"
-          cor="descanso"
-          onPress={adicionarTeste}
-        />
         <Botao
           titulo="Limpar histórico"
           onPress={confirmarLimpeza}

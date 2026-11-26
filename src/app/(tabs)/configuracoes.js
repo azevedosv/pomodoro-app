@@ -15,7 +15,7 @@ function paraTextos(config) {
     pausaCurta: String(config.pausaCurta),
     pausaLonga: String(config.paulaLonga),
     meta: config.meta === null ? "" : String(config.meta),
-    pausaLongaACada: String(config.paulaLongaACada),
+    pausaLongaACada: String(config.pausaLongaACada),
   };
 }
 
